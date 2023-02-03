@@ -1,6 +1,14 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app>
+      <v-layout column align-center>
+        <v-flex class="mt-5">
+          <v-avatar color="primary" size="100">
+            <v-img src="https://randomuser.me/api/portraits/men/1.jpg"></v-img>
+          </v-avatar>
+          <p class="dark subheading mt-2">Insta Vue</p>
+        </v-flex>
+      </v-layout>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
@@ -34,7 +42,7 @@
 
       <v-toolbar-title class="white--text">
         <v-app-bar-nav-icon @click="drawer = !drawer">
-  
+
         </v-app-bar-nav-icon>
         <span class="fontweight-light">YULU</span>
         <span>ToDo</span>

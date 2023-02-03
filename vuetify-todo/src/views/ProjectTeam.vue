@@ -7,7 +7,7 @@
                 <v-flex xs12 sm6 md4 lg3 v-for="member in team" :key="member.name">
                     <v-card flat class="text-center ma-3" outlined=true>
                         <v-responsive class="pt-4">
-                            <v-avatar color="primary" size="100">
+                            <v-avatar color="primary" size="150">
                                 <v-img :src="member.picture" height="200px"></v-img>
                             </v-avatar>
                         </v-responsive>
@@ -44,17 +44,17 @@
             team: [{
                     name: "Lori John",
                     role: 'Developer',
-                    picture: 'https://randomuser.me/api/portraits/women/1.jpg'
+                    picture: 'https://randomuser.me/api/portraits/women/2.jpg'
                 },
                 {
                     name: "Viktor Roy",
                     role: 'Architect',
-                    picture: 'https://randomuser.me/api/portraits/men/3.jpg'
+                    picture: 'https://randomuser.me/api/portraits/men/11.jpg'
                 },
                 {
                     name: "Shiv Sara",
                     role: 'Project Manager',
-                    picture: 'https://randomuser.me/api/portraits/men/5.jpg'
+                    picture: 'https://randomuser.me/api/portraits/men/7.jpg'
                 },
                 {
                     name: "Durg Pandiya",
@@ -64,7 +64,7 @@
                 {
                     name: "Carpenter Will",
                     role: 'Sales',
-                    picture: 'https://randomuser.me/api/portraits/men/11.jpg'
+                    picture: 'https://randomuser.me/api/portraits/men/19.jpg'
                 },
             ]
         }),
