@@ -1,18 +1,20 @@
 ### BasicVuetify
-Vuetify Beginner Tutorial - Material Design component framework for Vue.js
+Vuetify Beginner Tutorial - Material Design component framework for Vue.js. It is a UI component library based on Google's Material Design specifically designed for Vue.js to make websites nice and clean.
 
 
 ### References
-Vue Getting Started: https://cli.vuejs.org/#getting-started
-Vuetify Library: https://vuetifyjs.com/en/
-YouTube: https://www.youtube.com/watch?v=CjXgoYo86yY
-Vuetify Wireframes: https://vuetifyjs.com/en/getting-started/wireframes/
-Random pictures: https://picsum.photos/1920/1080?random
+* Vue Getting Started: https://cli.vuejs.org/#getting-started
+* Vuetify Library: https://vuetifyjs.com/en/
+* YouTube: https://www.youtube.com/watch?v=CjXgoYo86yY
+* Vuetify Wireframes: https://vuetifyjs.com/en/getting-started/wireframes/
+* Random pictures: https://picsum.photos/1920/1080?random
 
 ### Local Setup
-NodeJS v14.20.1
-Vue
-Vuetify
+* NodeJS v14.20.1
+* Vue 2.6.14
+* Vue/cli 5.0.8
+* Vuetify 2.6.0
+  
 ```
 
 $ npm install -g @vue/cli
@@ -28,12 +30,15 @@ To get to know the versions
 $ npm v vue
 $ vue --version
 
-
+Now, create a new project
 $ vue create vuetify-todo
 [Options: Vue2 and npm]
 
 $ cd vuetify-todo
+
+Now, add vuetify plugin (you will see this plugin under the src/plugins folder)
 $ vue add vuetify
+
 $ npm run serve
 ```
 
