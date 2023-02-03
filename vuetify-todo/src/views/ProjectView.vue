@@ -2,8 +2,17 @@
   <div class="project pa-2">
     <h1 class="lighter--grey">Project YuLu!</h1>
     <v-container class="my-5">
+      <v-layout row class="mb-3">
+        <v-btn small flat color="grey" class="ma-2" @click="sortBy('title')">
+          <v-icon left small>mdi-folder-account-outline</v-icon>
+          <span class="caption white--text text-lowercase">By Project</span>
+        </v-btn>
+        <v-btn small flat color="grey" class="ma-2" @click="sortBy('person')">
+          <v-icon dark left small>mdi-account</v-icon>
+          <span class="caption white--text text-lowercase">By Person</span>
+        </v-btn>
+      </v-layout>
       <v-card flat class="pa-3"  v-for="project in projects" :key="project.id">
-
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
           <v-flex xs12 md6>
             <!-- <v-btn outline block class="primary">1</v-btn> -->
@@ -20,8 +29,8 @@
             <div class="caption grey--text">Due By</div>
             <div>{{project.due}}</div>
           </v-flex>
-          <v-flex xs2 sm4 md2>
-            <v-chip small :class="`${project.status} dark caption my-2`">{{project.status}}</v-chip>
+          <v-flex xs3 sm4 md2>
+            <v-chip small :class="`${project.status} white--text caption my-2`">{{project.status}}</v-chip>
           </v-flex>
 
         </v-layout>
@@ -62,6 +71,11 @@
           }
         ]
       }
+    },
+    methods: {
+      sortBy(prop){
+        this.projects.sort((a,b) => a[prop].toLowerCase() < b[prop].toLowerCase() ? (a===b ? 0 :-1): 1)
+      }
     }
   }
   </script>
@@ -77,13 +91,13 @@
   }
 
   .v-chip.complete{
-    border-left: 4px solid #3cd1c2;
+    background: #3cd1c2;
   }
   .v-chip.ongoing{
-    border-left: 4px solid orange;
+    background: orange;
   }
   .v-chip.inactive{
-    border-left: 4px solid tomato;
+    background: tomato;
   }
 
   </style>
