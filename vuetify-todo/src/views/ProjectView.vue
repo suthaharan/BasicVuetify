@@ -3,14 +3,27 @@
     <h1 class="lighter--grey">Project YuLu!</h1>
     <v-container class="my-5">
       <v-layout row class="mb-3">
-        <v-btn small flat color="grey" class="ma-2" @click="sortBy('title')">
-          <v-icon left small>mdi-folder-account-outline</v-icon>
-          <span class="caption white--text text-lowercase">By Project</span>
-        </v-btn>
-        <v-btn small flat color="grey" class="ma-2" @click="sortBy('person')">
-          <v-icon dark left small>mdi-account</v-icon>
-          <span class="caption white--text text-lowercase">By Person</span>
-        </v-btn>
+
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+          <v-btn small flat color="grey" class="ma-2" @click="sortBy('title')" v-bind="attrs" v-on="on">
+            <v-icon left small>mdi-folder-account-outline</v-icon>
+            <span class="caption white--text text-lowercase">By Project</span>
+          </v-btn>
+          </template>
+          <span>Sort projects by title</span>
+        </v-tooltip>
+
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+          <v-btn small flat color="grey" class="ma-2" @click="sortBy('person')" v-bind="attrs" v-on="on">
+            <v-icon dark left small>mdi-account</v-icon>
+            <span class="caption white--text text-lowercase">By Person</span>
+          </v-btn>
+        </template>
+        <span>Sort projects by person</span>
+        </v-tooltip>
+
       </v-layout>
       <v-card flat class="pa-3"  v-for="project in projects" :key="project.id">
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
