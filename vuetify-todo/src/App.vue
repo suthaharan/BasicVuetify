@@ -81,8 +81,13 @@
         },
         {
           title: 'Project',
-          icon: 'mdi-account-box',
+          icon: 'mdi-briefcase',
           to: '/project'
+        },
+        {
+          title: 'Team',
+          icon: 'mdi-account-group',
+          to: '/team'
         },
       ],
       right: null,

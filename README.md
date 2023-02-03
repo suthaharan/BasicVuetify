@@ -7,7 +7,8 @@ Vuetify Beginner Tutorial - Material Design component framework for Vue.js. It i
 * Vuetify Library: https://vuetifyjs.com/en/
 * YouTube: https://www.youtube.com/watch?v=CjXgoYo86yY
 * Vuetify Wireframes: https://vuetifyjs.com/en/getting-started/wireframes/
-* Random pictures: https://picsum.photos/1920/1080?random
+* Random background pictures: https://picsum.photos/1920/1080?random
+* Random user picture: https://randomuser.me/api/portraits/men/1.jpg
 
 ### Local Setup
 * NodeJS v14.20.1
