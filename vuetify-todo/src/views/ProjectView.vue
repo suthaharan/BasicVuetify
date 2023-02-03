@@ -21,8 +21,7 @@
             <div>{{project.due}}</div>
           </v-flex>
           <v-flex xs2 sm4 md2>
-            <div class="caption grey--text">Status</div>
-            <div>{{project.status}}</div>
+            <v-chip small :class="`${project.status} dark caption my-2`">{{project.status}}</v-chip>
           </v-flex>
 
         </v-layout>
@@ -47,7 +46,7 @@
             title: "Prepare material",
             person: 'John Doe',
             due: '1st Feb 2023',
-            status: 'active'
+            status: 'ongoing'
           }, {
             id: 2,
             title: "Analyze material",
@@ -70,10 +69,21 @@
   .project.complete{
     border-left: 4px solid #3cd1c2;
   }
-  .project.active{
+  .project.ongoing{
     border-left: 4px solid orange;
   }
   .project.inactive{
     border-left: 4px solid tomato;
   }
+
+  .v-chip.complete{
+    border-left: 4px solid #3cd1c2;
+  }
+  .v-chip.ongoing{
+    border-left: 4px solid orange;
+  }
+  .v-chip.inactive{
+    border-left: 4px solid tomato;
+  }
+
   </style>
