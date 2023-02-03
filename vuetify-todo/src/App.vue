@@ -79,6 +79,11 @@
           icon: 'mdi-account-box',
           to: '/about'
         },
+        {
+          title: 'Project',
+          icon: 'mdi-account-box',
+          to: '/project'
+        },
       ],
       right: null,
     }),
