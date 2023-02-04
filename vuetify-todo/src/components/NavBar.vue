@@ -23,7 +23,8 @@
                 </v-flex>
 
                 <v-flex class="mt-4 mb-3">
-                    <PopUp/>
+                    <PopupProfile />
+                    <PopupProject/>
                 </v-flex>
             </v-layout>
 
@@ -76,11 +77,13 @@
 
 <script>
     import ShortMenu from "@/components/ShortMenu";
-    import PopUp from "@/components/PopUp";
+    import PopupProfile from "@/components/PopupProfile";
+    import PopupProject from "@/components/PopupProject";
     export default {
         components: {
             ShortMenu,
-            PopUp
+            PopupProfile,
+            PopupProject
         },
         data: () => ({
             drawer: null,
