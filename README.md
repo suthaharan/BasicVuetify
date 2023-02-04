@@ -15,7 +15,7 @@ Vuetify Beginner Tutorial - Material Design component framework for Vue.js. It i
 * Vue 2.6.14
 * Vue/cli 5.0.8
 * Vuetify 2.6.0 (Reference: https://vuetifyjs.com/en/components/tooltips/#alignment)
-  
+* Install date-fns from npm for date formatting  
 ```
 
 $ npm install -g @vue/cli
