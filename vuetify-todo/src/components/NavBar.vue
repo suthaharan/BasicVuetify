@@ -3,9 +3,9 @@
     <v-layout column align-center>
       <v-flex class="mt-5">
         <v-avatar color="primary" size="100">
-          <v-img src="https://randomuser.me/api/portraits/men/1.jpg"></v-img>
+          <v-img src="https://randomuser.me/api/portraits/men/21.jpg"></v-img>
         </v-avatar>
-        <p class="dark subheading mt-2 font-weight-bold">Insta Vue</p>
+        <p class="dark subheading mt-2 font-weight-bold text-center">Insta Vue</p>
       </v-flex>
     </v-layout>
     <v-list-item>
@@ -52,6 +52,11 @@
           title: 'Project',
           icon: 'mdi-briefcase',
           to: '/project'
+        },
+        {
+          title: 'My Projects',
+          icon: 'mdi-account-group',
+          to: '/myprojects'
         },
         {
           title: 'Team',

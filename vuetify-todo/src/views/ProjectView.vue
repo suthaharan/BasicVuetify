@@ -81,6 +81,18 @@
             person: 'Mary Doe',
             due: '1st Dec 2023',
             status: 'inactive'
+          }, {
+            id: 4,
+            title: "Test Program",
+            person: 'Robert Doe',
+            due: '21st Jul 2023',
+            status: 'ongoing'
+          }, {
+            id: 5,
+            title: "Quality Check",
+            person: 'Robert Doe',
+            due: '31st Dec 2023',
+            status: 'inactive'
           }
         ]
       }

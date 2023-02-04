@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import ToDoView from '../views/ToDo'
 import ProjectView from '../views/ProjectView'
 import TeamView from '../views/ProjectTeam'
+import MyProjects from '../views/MyProjects'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,11 @@ const routes = [
     path: '/project',
     name: 'project',
     component: ProjectView
+  },
+  {
+    path: '/myprojects',
+    name: 'myprojects',
+    component: MyProjects
   },
   {
     path: '/team',
