@@ -1,14 +1,6 @@
 <template>
     <div>
         <v-navigation-drawer v-model="drawer" app>
-            <v-layout column align-center>
-                <v-flex class="mt-5">
-                    <v-avatar color="primary" size="100">
-                        <v-img src="https://randomuser.me/api/portraits/men/21.jpg"></v-img>
-                    </v-avatar>
-                    <p class="dark subheading mt-2 font-weight-bold text-center">Robert Doe</p>
-                </v-flex>
-            </v-layout>
             <v-list-item>
                 <v-list-item-content>
                     <v-list-item-title class="text-h6">
@@ -21,6 +13,19 @@
             </v-list-item>
 
             <v-divider></v-divider>
+
+            <v-layout column align-center>
+                <v-flex class="mt-5">
+                    <v-avatar color="primary" size="100">
+                        <v-img src="https://randomuser.me/api/portraits/men/21.jpg"></v-img>
+                    </v-avatar>
+                    <p class="dark subheading mt-2 font-weight-bold text-center">Robert Doe</p>
+                </v-flex>
+
+                <v-flex class="mt-4 mb-3">
+                    <PopUp/>
+                </v-flex>
+            </v-layout>
 
             <v-list dense nav>
                 <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
@@ -49,7 +54,6 @@
                 <span>ToDo</span>
             </v-toolbar-title>
 
-
             <v-spacer></v-spacer>
 
             <ShortMenu :shortmenu="items"/>
@@ -72,9 +76,11 @@
 
 <script>
     import ShortMenu from "@/components/ShortMenu";
+    import PopUp from "@/components/PopUp";
     export default {
         components: {
-            ShortMenu
+            ShortMenu,
+            PopUp
         },
         data: () => ({
             drawer: null,
