@@ -22,9 +22,13 @@
                     <p class="dark subheading mt-2 font-weight-bold text-center">Robert Doe</p>
                 </v-flex>
 
-                <v-flex class="mt-4 mb-3">
-                    <PopupProfile />
-                    <PopupProject/>
+                <v-flex xs12 sm12 md12 class="mt-4 mb-3">
+                    <v-card  class="d-flex justify-center mb-6">
+                            <PopupProfile />
+                        </v-card>
+                    <v-card  class="d-flex justify-center mb-6">
+                            <PopupProject />
+                        </v-card>
                 </v-flex>
             </v-layout>
 
