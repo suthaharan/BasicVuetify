@@ -1,69 +1,110 @@
 <template>
-<div>
-    <v-layout column align-center>
-      <v-flex class="mt-5">
-        <v-avatar color="primary" size="100">
-          <v-img src="https://randomuser.me/api/portraits/men/21.jpg"></v-img>
-        </v-avatar>
-        <p class="dark subheading mt-2 font-weight-bold text-center">Insta Vue</p>
-      </v-flex>
-    </v-layout>
-    <v-list-item>
-      <v-list-item-content>
-        <v-list-item-title class="text-h6">
-          Yulu ToDo
-        </v-list-item-title>
-        <v-list-item-subtitle>
-          Simple Task Manager
-        </v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
+    <div>
+        <v-navigation-drawer v-model="drawer" app>
+            <v-layout column align-center>
+                <v-flex class="mt-5">
+                    <v-avatar color="primary" size="100">
+                        <v-img src="https://randomuser.me/api/portraits/men/21.jpg"></v-img>
+                    </v-avatar>
+                    <p class="dark subheading mt-2 font-weight-bold text-center">Robert Doe</p>
+                </v-flex>
+            </v-layout>
+            <v-list-item>
+                <v-list-item-content>
+                    <v-list-item-title class="text-h6">
+                        Yulu ToDo
+                    </v-list-item-title>
+                    <v-list-item-subtitle>
+                        Simple Task Manager
+                    </v-list-item-subtitle>
+                </v-list-item-content>
+            </v-list-item>
 
-    <v-divider></v-divider>
+            <v-divider></v-divider>
 
-    <v-list dense nav>
-      <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
-        <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
+            <v-list dense nav>
+                <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
+                    <v-list-item-icon>
+                        <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-item-icon>
 
-        <v-list-item-content>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-</div>
+                    <v-list-item-content>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+
+        </v-navigation-drawer>
+
+        <v-app-bar app flat color="primary" dark src="mandalas.jpg">
+            <template v-slot:img="{ props }">
+                <v-img v-bind="props" gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"></v-img>
+            </template>
+
+            <v-toolbar-title class="white--text">
+                <v-app-bar-nav-icon @click="drawer = !drawer">
+
+                </v-app-bar-nav-icon>
+                <span class="fontweight-light">YULU</span>
+                <span>ToDo</span>
+            </v-toolbar-title>
+
+
+            <v-spacer></v-spacer>
+
+            <ShortMenu :shortmenu="items"/>
+
+            <v-btn icon>
+                <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+
+            <v-btn icon>
+                <v-icon>mdi-heart</v-icon>
+            </v-btn>
+
+            <v-btn icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+        </v-app-bar>
+
+    </div>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      items: [{
-          title: 'ToDo',
-          icon: 'mdi-format-list-checks',
-          to: '/'
+    import ShortMenu from "@/components/ShortMenu";
+    export default {
+        components: {
+            ShortMenu
         },
-        {
-          title: 'About',
-          icon: 'mdi-account-box',
-          to: '/about'
-        },
-        {
-          title: 'Project',
-          icon: 'mdi-briefcase',
-          to: '/project'
-        },
-        {
-          title: 'My Projects',
-          icon: 'mdi-account-group',
-          to: '/myprojects'
-        },
-        {
-          title: 'Team',
-          icon: 'mdi-account-group',
-          to: '/team'
-        },
-      ],
-    }),
-  }
+        data: () => ({
+            drawer: null,
+            right: null,
+            items: [{
+                    title: 'ToDo',
+                    icon: 'mdi-format-list-checks',
+                    to: '/'
+                },
+                {
+                    title: 'About',
+                    icon: 'mdi-account-box',
+                    to: '/about'
+                },
+                {
+                    title: 'Projects',
+                    icon: 'mdi-briefcase',
+                    to: '/project'
+                },
+                {
+                    title: 'My Projects',
+                    icon: 'mdi-account-group',
+                    to: '/myprojects'
+                },
+                {
+                    title: 'Team',
+                    icon: 'mdi-account-group',
+                    to: '/team'
+                },
+            ],
+        }),
+    }
 </script>
