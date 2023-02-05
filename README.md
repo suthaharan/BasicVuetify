@@ -60,3 +60,13 @@ $ vue add router
 ![YuLu About](assets/yulu-about.jpg)
 
 ![YuLu Tasks](assets/yulu-todo.jpg)
+
+* Firebase provides a back-end as a service to our apps.
+* Firestore is one of the service provided by Firebase. A NoSQL database to store data in.
+* Contains collections of documents
+* Allows us to update data store in real time
+* In the application, we will have collection of projects stored in FireStore. Each collection will have a unique identifier.
+  ```
+    $ yarn add firebase
+  ```
+* Go to Firebase > Project overview and select the config setting (</>)

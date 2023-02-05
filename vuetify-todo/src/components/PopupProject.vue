@@ -61,6 +61,8 @@
 <script>
 
 import format from "date-fns/format";
+import {db} from '@/fb';
+
     export default {
         data: () => ({
             dialog: false,
@@ -77,18 +79,32 @@ import format from "date-fns/format";
             ]
         }),
         methods: {
-            submit() {
+            submit(e) {
+                e.preventDefault();
                 if(this.$refs.projectform.validate()){
-                    console.log(this.title, this.content)
+                    console.log(`Title: ${this.title}, Content: ${this.content}, Due: ${this.due}`);
+                    const project = {
+                        title: this.title,
+                        content: this.content,
+                        due:  format(new Date(this.due.replace(/-/g, '/')), 'do MMM yyyy'),
+                        person: 'Don Rock',
+                        status: 'ongoing',
+                        id: Math.floor((Math.random() * 10000) + 1)
+                    };
+                    console.log(project);
+                    db.collection('projects').add(project).then(() => {
+                        console.log("Added to Firestore!");
+                    });
+
                 }else{
-                    console.log("cannot submit form")
+                    console.log("cannot submit project form")
                 }
                 
             }
         },
         computed:{
             formattedDate(){
-                return this.due? format(new Date(this.due.replace(/-/g, '/')), 'do MMM YYY') : '';
+                return this.due? format(new Date(this.due.replace(/-/g, '/')), 'do MMM yyyy') : '';
             }
         }
     }
