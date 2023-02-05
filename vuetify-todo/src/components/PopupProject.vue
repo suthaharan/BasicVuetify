@@ -6,27 +6,29 @@
                     Create Project
                 </v-btn>
             </template>
+            <v-form class="pa-3" ref="projectform">
             <v-card>
                 <v-card-title>
                     <span class="text-h5">Add a Project</span>
                 </v-card-title>
-                <v-card-text>
+                <v-card-text> 
                     <v-container>
                         <v-row>
+                           
                             <v-col cols="12" sm="6" md="4">
-                                <v-text-field label="Project name*" v-model="title" required prepend-icon="mdi-folder">
+                                <v-text-field label="Project name*" v-model="title" required prepend-icon="mdi-folder" :rules="inputRules">
                                 </v-text-field>
                             </v-col>
                             <v-col cols="12" sm="6" md="4">
                                 <v-text-field v-model="id" label="Project id" prepend-icon="mdi-map-marker"
-                                    hint="Unique Project ID"></v-text-field>
+                                    hint="Unique Project ID"  :rules="inputRules"></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="12" md="12">
 
-                                <v-menu v-model="menu2" :close-on-content-click="false" :nudge-right="40"
+                                <v-menu v-model="menu2" :close-on-content-click="true" :nudge-right="40"
                                     transition="scale-transition" offset-y min-width="auto">
                                     <template v-slot:activator="{ on, attrs }">
-                                        <v-text-field :value="formattedDate" label="Due Date"
+                                        <v-text-field :value="formattedDate" label="Due Date"  :rules="inputRules"
                                             prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on">
                                         </v-text-field>
                                     </template>
@@ -34,11 +36,12 @@
                                 </v-menu>
 
                                 <v-textarea v-model="content" prepend-icon="mdi-comment" 
-                                    label="Project Description" rows="2"></v-textarea>
+                                    label="Project Description"  :rules="inputRules" rows="2"></v-textarea>
 
                             </v-col>
                         </v-row>
                     </v-container>
+                
                     <small>*indicates required field</small>
                 </v-card-text>
                 <v-card-actions>
@@ -51,6 +54,7 @@
                     </v-btn>
                 </v-card-actions>
             </v-card>
+        </v-form>
         </v-dialog>
     </v-row>
 </template>
@@ -68,10 +72,18 @@ import format from "date-fns/format";
             menu: false,
             modal: false,
             menu2: false,
+            inputRules:[
+                v => v.length >= 3 || 'Minimum length is 3 characters'
+            ]
         }),
         methods: {
             submit() {
-                console.log(this.title, this.content)
+                if(this.$refs.projectform.validate()){
+                    console.log(this.title, this.content)
+                }else{
+                    console.log("cannot submit form")
+                }
+                
             }
         },
         computed:{
