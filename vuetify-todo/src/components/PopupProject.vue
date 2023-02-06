@@ -49,7 +49,7 @@
                     <v-btn color="white darken-1" text @click="dialog = false" class="red">
                         Close
                     </v-btn>
-                    <v-btn color="white darken-1" text @click="submit" class="green">
+                    <v-btn color="white darken-1" text @click="submit" :loading="loading" class="green">
                         Save
                     </v-btn>
                 </v-card-actions>
@@ -76,24 +76,26 @@ import {db} from '@/fb';
             menu2: false,
             inputRules:[
                 v => v.length >= 3 || 'Minimum length is 3 characters'
-            ]
+            ],
+            loading: false
         }),
         methods: {
-            submit(e) {
-                e.preventDefault();
+            submit() {
                 if(this.$refs.projectform.validate()){
-                    console.log(`Title: ${this.title}, Content: ${this.content}, Due: ${this.due}`);
+                    this.loading = true;
+                    //console.log(`Title: ${this.title}, Content: ${this.content}, Due: ${this.due}`);
                     const project = {
                         title: this.title,
                         content: this.content,
                         due:  format(new Date(this.due.replace(/-/g, '/')), 'do MMM yyyy'),
                         person: 'Don Rock',
                         status: 'ongoing',
-                        id: Math.floor((Math.random() * 10000) + 1)
+                        id: (this.id? this.id: Math.floor((Math.random() * 10000) + 1))
                     };
-                    console.log(project);
+                    //console.log(project);
                     db.collection('projects').add(project).then(() => {
                         console.log("Added to Firestore!");
+                        this.loading = false;
                     });
 
                 }else{
