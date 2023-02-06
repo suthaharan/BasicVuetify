@@ -27,7 +27,7 @@
                             <PopupProfile />
                         </v-card>
                     <v-card  class="d-flex justify-center mb-6">
-                            <PopupProject />
+                            <PopupProject @projectAdded="snackbar = true"/>
                         </v-card>
                 </v-flex>
             </v-layout>
@@ -47,6 +47,11 @@
         </v-navigation-drawer>
 
         <v-app-bar app flat color="primary" dark src="mandalas.jpg">
+            <v-snackbar v-model="snackbar" :timeout="10000" top color="success">
+                <div>Awesome! You added a new project
+                <v-btn dark @click="snackbar=false">Close</v-btn>
+                </div>
+            </v-snackbar>
             <template v-slot:img="{ props }">
                 <v-img v-bind="props" gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"></v-img>
             </template>
@@ -92,6 +97,7 @@
         data: () => ({
             drawer: null,
             right: null,
+            snackbar: false,
             items: [{
                     title: 'ToDo',
                     icon: 'mdi-format-list-checks',

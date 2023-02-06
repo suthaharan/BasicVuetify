@@ -96,6 +96,8 @@ import {db} from '@/fb';
                     db.collection('projects').add(project).then(() => {
                         console.log("Added to Firestore!");
                         this.loading = false;
+                        this.dialog = false;
+                        this.$emit('projectAdded');
                     });
 
                 }else{
