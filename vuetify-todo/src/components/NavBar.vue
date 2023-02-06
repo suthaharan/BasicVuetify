@@ -47,7 +47,7 @@
         </v-navigation-drawer>
 
         <v-app-bar app flat color="primary" dark src="mandalas.jpg">
-            <v-snackbar v-model="snackbar" :timeout="10000" top color="success">
+            <v-snackbar v-model="snackbar" :timeout="3000" top color="success">
                 <div>Awesome! You added a new project
                 <v-btn dark @click="snackbar=false">Close</v-btn>
                 </div>

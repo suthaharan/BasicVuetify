@@ -20,8 +20,8 @@
                                 </v-text-field>
                             </v-col>
                             <v-col cols="12" sm="6" md="4">
-                                <v-text-field v-model="id" label="Project id" prepend-icon="mdi-map-marker"
-                                    hint="Unique Project ID"  :rules="inputRules"></v-text-field>
+                                <v-text-field v-model="person" label="Person name" prepend-icon="mdi-map-marker"
+                                    hint="Person"  :rules="inputRules"></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="12" md="12">
 
@@ -88,7 +88,7 @@ import {db} from '@/fb';
                         title: this.title,
                         content: this.content,
                         due:  format(new Date(this.due.replace(/-/g, '/')), 'do MMM yyyy'),
-                        person: 'Don Rock',
+                        person: this.person,
                         status: 'ongoing',
                         id: (this.id? this.id: Math.floor((Math.random() * 10000) + 1))
                     };
@@ -98,6 +98,7 @@ import {db} from '@/fb';
                         this.loading = false;
                         this.dialog = false;
                         this.$emit('projectAdded');
+                        this.$refs.projectform.reset();
                     });
 
                 }else{

@@ -70,3 +70,9 @@ $ vue add router
     $ yarn add firebase
   ```
 * Go to Firebase > Project overview and select the config setting (</>)
+
+![YuLu Team](assets/Yulu-Team.jpg)
+
+![YuLu Projects](assets/Yulu-Projects.jpg)
+
+![YuLu MyProjects](assets/Yulu-MyProjects.jpg)

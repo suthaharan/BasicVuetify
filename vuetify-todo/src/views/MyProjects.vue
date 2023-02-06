@@ -28,47 +28,50 @@
     </div>
 </template>
 <script>
+import {db} from '@/fb';
     export default {
         name: 'MyProjects',
         data() {
             return {
                 newTask: '',
-                projects: [{
-                    id: 1,
-                    title: "Prepare material",
-                    person: 'John Doe',
-                    due: '1st Feb 2023',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    status: 'ongoing'
-                }, {
-                    id: 2,
-                    title: "Analyze material",
-                    person: 'Robert Doe',
-                    due: '1st Jan 2023',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    status: 'complete'
-                }, {
-                    id: 3,
-                    title: "Research material",
-                    person: 'Mary Doe',
-                    due: '1st Dec 2023',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    status: 'inactive'
-                }, {
-                    id: 4,
-                    title: "Test Program",
-                    person: 'Robert Doe',
-                    due: '21st Jul 2023',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    status: 'ongoing'
-                }, {
-                    id: 5,
-                    title: "Quality Check",
-                    person: 'Robert Doe',
-                    due: '31st Dec 2023',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    status: 'inactive'
-                }]
+                projects: [
+                //     {
+                //     id: 1,
+                //     title: "Prepare material",
+                //     person: 'John Doe',
+                //     due: '1st Feb 2023',
+                //     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                //     status: 'ongoing'
+                // }, {
+                //     id: 2,
+                //     title: "Analyze material",
+                //     person: 'Robert Doe',
+                //     due: '1st Jan 2023',
+                //     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                //     status: 'complete'
+                // }, {
+                //     id: 3,
+                //     title: "Research material",
+                //     person: 'Mary Doe',
+                //     due: '1st Dec 2023',
+                //     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                //     status: 'inactive'
+                // }, {
+                //     id: 4,
+                //     title: "Test Program",
+                //     person: 'Robert Doe',
+                //     due: '21st Jul 2023',
+                //     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                //     status: 'ongoing'
+                // }, {
+                //     id: 5,
+                //     title: "Quality Check",
+                //     person: 'Robert Doe',
+                //     due: '31st Dec 2023',
+                //     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                //     status: 'inactive'
+                // }
+            ]
             }
         },
         computed: {
@@ -77,7 +80,20 @@
                     return project.person === 'Robert Doe';
                 })
             }
-        }
+        },
+    created(){
+      db.collection('projects').onSnapshot(res => {
+        const changes = res.docChanges();
+        changes.forEach(change => {
+          if(change.type === 'added'){
+            this.projects.push({
+              ...change.doc.data(), 
+              id: change.doc.id
+            });
+          }
+        })
+      })
+    }
     }
 </script>
 <style scoped>

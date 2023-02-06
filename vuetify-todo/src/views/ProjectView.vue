@@ -57,43 +57,46 @@
   </div>
 </template>
 <script>
+//import format from "date-fns/format";
+import {db} from '@/fb';
+
   export default {
     name: 'ProjectView',
     data() {
       return {
         newTask: '',
         projects: [
-            {
-            id: 1,
-            title: "Prepare material",
-            person: 'John Doe',
-            due: '1st Feb 2023',
-            status: 'ongoing'
-          }, {
-            id: 2,
-            title: "Analyze material",
-            person: 'Robert Doe',
-            due: '1st Jan 2023',
-            status: 'complete'
-          }, {
-            id: 3,
-            title: "Research material",
-            person: 'Mary Doe',
-            due: '1st Dec 2023',
-            status: 'inactive'
-          }, {
-            id: 4,
-            title: "Test Program",
-            person: 'Robert Doe',
-            due: '21st Jul 2023',
-            status: 'ongoing'
-          }, {
-            id: 5,
-            title: "Quality Check",
-            person: 'Robert Doe',
-            due: '31st Dec 2023',
-            status: 'inactive'
-          }
+          //   {
+          //   id: 1,
+          //   title: "Prepare material",
+          //   person: 'John Doe',
+          //   due: '1st Feb 2023',
+          //   status: 'ongoing'
+          // }, {
+          //   id: 2,
+          //   title: "Analyze material",
+          //   person: 'Robert Doe',
+          //   due: '1st Jan 2023',
+          //   status: 'complete'
+          // }, {
+          //   id: 3,
+          //   title: "Research material",
+          //   person: 'Mary Doe',
+          //   due: '1st Dec 2023',
+          //   status: 'inactive'
+          // }, {
+          //   id: 4,
+          //   title: "Test Program",
+          //   person: 'Robert Doe',
+          //   due: '21st Jul 2023',
+          //   status: 'ongoing'
+          // }, {
+          //   id: 5,
+          //   title: "Quality Check",
+          //   person: 'Robert Doe',
+          //   due: '31st Dec 2023',
+          //   status: 'inactive'
+          // }
         ]
       }
     },
@@ -101,6 +104,19 @@
       sortBy(prop){
         this.projects.sort((a,b) => a[prop].toLowerCase() < b[prop].toLowerCase() ? (a===b ? 0 :-1): 1)
       }
+    },
+    created(){
+      db.collection('projects').onSnapshot(res => {
+        const changes = res.docChanges();
+        changes.forEach(change => {
+          if(change.type === 'added'){
+            this.projects.push({
+              ...change.doc.data(), 
+              id: change.doc.id
+            });
+          }
+        })
+      })
     }
   }
   </script>
