@@ -76,3 +76,18 @@ $ vue add router
 ![YuLu Projects](assets/Yulu-Projects.jpg)
 
 ![YuLu MyProjects](assets/Yulu-MyProjects.jpg)
+
+
+#### Things to do
+* When there are no tasks, display 'No Tasks' message with an icon
+* In the ToDo display, add a snackbar at the bottom of the window and make it disappear after few seconds
+* For each task, add a menu to the right with four different options (Edit, Due Date, Delete, Sort). Each task should be able to perform its function
+  * Edit task
+  * Add due date with date picker modal window. Once date is added, display it next to the task in smaller font (calendar icon Mon dd)
+  * Delete task which will open up a confirm dialog asking you if you really want to delete the task
+  * Sort option when clicked will open up drag handles which can help you sort out task display
+  * In the NavBar add in live date and time
+  * Move add a task text field to the pin up nav bar in the top
+  * Add in a search bar at the top which will open up a search text field allowing you to narrow down the tasks from the list
+  * Adding localbase to the project  - offline database with the simplicity & power of Firebase, all stored in the user's browser (in an IndexedDB database). Reference: https://www.youtube.com/watch?v=KJnupY2HPCg
+  
