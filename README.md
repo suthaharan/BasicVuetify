@@ -9,7 +9,7 @@ Vuetify Beginner Tutorial - Material Design component framework for Vue.js. It i
 * Vuetify Wireframes: https://vuetifyjs.com/en/getting-started/wireframes/
 * Random background pictures: https://picsum.photos/1920/1080?random
 * Random user picture: https://randomuser.me/api/portraits/men/1.jpg
-
+* Vuetify tuite: https://www.youtube.com/watch?v=2uZYKcKHgU0&list=PL4cUxeGkcC9g0MQZfHwKcuB0Yswgb3gA5 
 ### Local Setup
 * NodeJS v14.20.1
 * Vue 2.6.14
@@ -67,9 +67,11 @@ $ vue add router
 * Allows us to update data store in real time
 * In the application, we will have collection of projects stored in FireStore. Each collection will have a unique identifier.
   ```
+  To use firebase in the project,
     $ yarn add firebase
   ```
 * Go to Firebase > Project overview and select the config setting (</>)
+
 
 ![YuLu Team](assets/Yulu-Team.jpg)
 
