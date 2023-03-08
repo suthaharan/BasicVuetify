@@ -28,15 +28,15 @@
                                 <v-menu v-model="menu2" :close-on-content-click="true" :nudge-right="40"
                                     transition="scale-transition" offset-y min-width="auto">
                                     <template v-slot:activator="{ on, attrs }">
-                                        <v-text-field :value="formattedDate" label="Due Date"  :rules="inputRules"
+                                        <v-text-field :value="formattedDate" :rules="inputRules" label="Due Date"
                                             prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on">
                                         </v-text-field>
                                     </template>
-                                    <v-date-picker v-model="due"></v-date-picker>
+                                    <v-date-picker v-model="due" ></v-date-picker>
                                 </v-menu>
 
                                 <v-textarea v-model="content" prepend-icon="mdi-comment" 
-                                    label="Project Description"  :rules="inputRules" rows="2"></v-textarea>
+                                    label="Project Description" rows="2"></v-textarea>
 
                             </v-col>
                         </v-row>
@@ -61,13 +61,14 @@
 <script>
 
 import format from "date-fns/format";
-import {db} from '@/fb';
+import db from '@/fb';
 
     export default {
         data: () => ({
             dialog: false,
             title: '',
             content: '',
+            person: '',
             id: '',
             due: null,
             date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
@@ -94,17 +95,28 @@ import {db} from '@/fb';
                     };
                     //console.log(project);
                     db.collection('projects').add(project).then(() => {
+                        this.inputRules = [] //clear rules
+                        this.$refs.projectform.reset();
                         console.log("Added to Firestore!");
                         this.loading = false;
                         this.dialog = false;
                         this.$emit('projectAdded');
-                        this.$refs.projectform.reset();
                     });
 
                 }else{
-                    console.log("cannot submit project form")
+                    console.log("Cannot submit project form")
                 }
                 
+            },
+            reset () {
+            this.$refs.projectform.reset()
+            },
+            resetValidation () {
+            this.$refs.projectform.resetValidation()
+            },
+            customError() {
+            this.nameErrorCount=3;
+            this.nameErrorMessages = ["Oh this field has error"]
             }
         },
         computed:{
